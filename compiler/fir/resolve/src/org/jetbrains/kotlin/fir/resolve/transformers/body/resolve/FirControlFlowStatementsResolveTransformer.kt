@@ -243,7 +243,7 @@ class FirControlFlowStatementsResolveTransformer(transformer: FirBodyResolveTran
             }
         }
 
-        dataFlowAnalyzer.exitElvis()
+        dataFlowAnalyzer.exitElvis(elvisExpression)
         return result.compose()
     }
 }
