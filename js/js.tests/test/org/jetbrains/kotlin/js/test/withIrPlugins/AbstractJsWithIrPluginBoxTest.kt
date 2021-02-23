@@ -9,6 +9,7 @@ import org.jetbrains.kotlin.backend.common.extensions.IrGenerationExtension
 import org.jetbrains.kotlin.ir.ObsoleteDescriptorBasedAPI
 import org.jetbrains.kotlin.js.test.BasicIrBoxTest
 import org.jetbrains.kotlin.js.test.withIrPlugins.plugins.ReplaceOriginalFunctionsExtension
+import org.jetbrains.kotlin.js.test.withIrPlugins.plugins.SetStaticPropertyIrExtension
 import org.jetbrains.kotlin.js.test.withIrPlugins.plugins.UseAssignableValueParametersIrExtensions
 
 abstract class AbstractJsWithIrPluginBoxTest(
@@ -31,3 +32,7 @@ abstract class AbstractJsWithReplaceOriginalCallsIrPluginBoxTest :
 // - the same-module test works
 abstract class AbstractJsWithAssignableValueParametersPluginBoxTest :
     AbstractJsWithIrPluginBoxTest(listOf(UseAssignableValueParametersIrExtensions()))
+
+// to test https://youtrack.jetbrains.com/issue/KT-44943 (Fields marked as isStatic are missing initializer in JS code)
+abstract class AbstractJsWithSetStaticPropertyPluginBoxTest :
+    AbstractJsWithIrPluginBoxTest(listOf(SetStaticPropertyIrExtension()))

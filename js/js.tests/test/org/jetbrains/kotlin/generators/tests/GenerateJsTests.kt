@@ -18,6 +18,7 @@ import org.jetbrains.kotlin.js.test.semantics.*
 import org.jetbrains.kotlin.js.test.wasm.semantics.AbstractIrCodegenBoxWasmTest
 import org.jetbrains.kotlin.js.test.withIrPlugins.AbstractJsWithAssignableValueParametersPluginBoxTest
 import org.jetbrains.kotlin.js.test.withIrPlugins.AbstractJsWithReplaceOriginalCallsIrPluginBoxTest
+import org.jetbrains.kotlin.js.test.withIrPlugins.AbstractJsWithSetStaticPropertyPluginBoxTest
 import org.jetbrains.kotlin.test.TargetBackend
 
 fun main(args: Array<String>) {
@@ -143,6 +144,9 @@ fun main(args: Array<String>) {
             }
             testClass<AbstractJsWithAssignableValueParametersPluginBoxTest> {
                 model("ir/withPlugin/assignableValueParameters", targetBackend = TargetBackend.JS_IR)
+            }
+            testClass<AbstractJsWithSetStaticPropertyPluginBoxTest> {
+                model("ir/withPlugin/setStaticProperty", targetBackend = TargetBackend.JS_IR)
             }
         }
     }
